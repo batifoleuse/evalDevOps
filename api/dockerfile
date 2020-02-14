@@ -1,0 +1,19 @@
+FROM node:13.8.0-alpine
+
+RUN mkdir -p /src/app/api
+
+WORKDIR /src/app/api
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . /api/
+
+EXPOSE 5000
+
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "start"]
